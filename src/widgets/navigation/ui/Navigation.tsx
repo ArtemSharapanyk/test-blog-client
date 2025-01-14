@@ -63,7 +63,7 @@ export const Navigation: FC<PropsWithChildren> = ({ children }) => {
         </ul>
       </nav>
 
-      <nav className="wrapper mobile md:hidden xs:block">
+      <nav className="wrapper mobile xs:text-[12px]  md:hidden xs:block">
         <div className="mb-[20px]">
           {data ? <div>{children}</div> : <h2>Blog app</h2>}
         </div>

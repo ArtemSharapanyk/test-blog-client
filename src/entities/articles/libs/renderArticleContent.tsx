@@ -31,7 +31,7 @@ export const renderArticleContent = (
 ): React.ReactNode => {
   if (content.code) {
     return (
-      <pre>
+      <pre className="bg-gray-400 rounded-md p-4 xs:overflow-x-scroll sm:overflow-x-auto">
         <code>{content.text}</code>
       </pre>
     );
