@@ -1,0 +1,1 @@
+export const BASE_SPEED_WORDS_PER_MINUTE = 120;
