@@ -71,6 +71,7 @@ export const Navigation: FC<PropsWithChildren> = ({ children }) => {
         <ul className="flex">
           {links.map((link, index) => {
             if (link.hideInAuth && data?.user) return null;
+            if(link.roleProtected === "authinticated" && !data?.user) return null
 
             return (
               <li

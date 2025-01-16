@@ -35,19 +35,17 @@ export const BasePagination: FC<{ meta: Meta }> = ({ meta }) => {
             "opacity-50 pointer-events-none cursor-not-allowed": isFirstPage,
           })}
         >
-          <PaginationPrevious onClick={prevPage} />
+          <PaginationPrevious href={prevPage()} />
         </PaginationItem>
 
         {totalPages > 1 &&
           [...Array(totalPages)].map((_, index) => {
             const page = index + 1;
-            const onClick = () => {
-              goToPage(page);
-            };
+
             return (
               <PaginationItem key={page}>
                 <PaginationLink
-                  onClick={onClick}
+                  href={goToPage(page)}
                   isActive={page === currentPage}
                   className="text-black"
                 >
@@ -61,7 +59,7 @@ export const BasePagination: FC<{ meta: Meta }> = ({ meta }) => {
             "opacity-50 pointer-events-none cursor-not-allowed": isLastPage,
           })}
         >
-          <PaginationNext onClick={nextPage} />
+          <PaginationNext href={nextPage()} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

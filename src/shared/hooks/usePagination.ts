@@ -1,8 +1,9 @@
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+"use client";
+
+import { usePathname, useSearchParams } from "next/navigation";
 import { Meta } from "../api/types/Meta";
 
 export const usePagination = (meta: Meta) => {
-  const router = useRouter();
   const serachParams = useSearchParams();
   const pathname = usePathname();
 
@@ -19,8 +20,9 @@ export const usePagination = (meta: Meta) => {
       const nextPage = currentPage + 1;
       const newUrl = new URL(pathname, window.location.origin);
       newUrl.searchParams.set("page", nextPage.toString());
-      router.push(newUrl.toString());
+      return newUrl.toString();
     }
+    return "";
   };
 
   const prevPage = () => {
@@ -28,14 +30,17 @@ export const usePagination = (meta: Meta) => {
       const nextPage = currentPage - 1;
       const newUrl = new URL(pathname, window.location.origin);
       newUrl.searchParams.set("page", nextPage.toString());
-      router.push(newUrl.toString());
+
+      return newUrl.toString();
     }
+
+    return "";
   };
 
   const goToPage = (page: number) => {
     const newUrl = new URL(pathname, window.location.origin);
     newUrl.searchParams.set("page", page.toString());
-    router.push(newUrl.toString());
+    return newUrl.toString();
   };
 
   return {

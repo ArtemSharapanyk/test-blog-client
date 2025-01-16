@@ -8,12 +8,11 @@ import Script from "next/script";
 
 export const revalidate = 60;
 
-export async function generateMetadata(
-  {searchParams}: {
-    searchParams: Promise<{ page: string }>;
-  }
-): Promise<Metadata> {
-
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page: string }>;
+}): Promise<Metadata> {
   const waitedSearchParams = await searchParams;
 
   const page = +waitedSearchParams.page || 1;
@@ -27,13 +26,18 @@ export async function generateMetadata(
         ? `${safeEnv?.NEXT_PUBLIC_DOMAIN}${ROUTES_PATHS.BLOG}`
         : `${safeEnv?.NEXT_PUBLIC_DOMAIN}${ROUTES_PATHS.BLOG}?page=${page}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   } as Metadata;
 }
 
-export default async function Blog(
-  {searchParams}: {searchParams: Promise< { page: string; search: string } >}
-) {
-
+export default async function Blog({
+  searchParams,
+}: {
+  searchParams: Promise<{ page: string; search: string }>;
+}) {
   const waitedSearchParams = await searchParams;
 
   const articles = await getArticlesList(

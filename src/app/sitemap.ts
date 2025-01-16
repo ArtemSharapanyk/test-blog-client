@@ -8,15 +8,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     { url: safeEnv?.NEXT_PUBLIC_DOMAIN, lastModified: new Date() },
     {
-      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}${ROUTES_PATHS.BLOG}`,
+      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}/${ROUTES_PATHS.BLOG}`,
       lastModified: new Date(),
     },
     {
-      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}${ROUTES_PATHS.SIGN_IN}`,
+      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}/${ROUTES_PATHS.SIGN_IN}`,
       lastModified: new Date(),
     },
     {
-      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}${ROUTES_PATHS.SIGN_UP}`,
+      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}/${ROUTES_PATHS.SIGN_UP}`,
       lastModified: new Date(),
     },
   ];
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const dateModified = article.updatedAt ?? article.publishedAt ?? new Date();
 
     return {
-      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}${article.documentId}`,
+      url: `${safeEnv?.NEXT_PUBLIC_DOMAIN}/${article.documentId}`,
       lastModified:
         typeof dateModified === "string"
           ? new Date(dateModified)

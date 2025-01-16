@@ -25,5 +25,9 @@ export const getMetadata = (id: string, article: Article) => {
       description: article.description,
       images: [getImageUrl(article?.cover?.url as string)],
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 };
