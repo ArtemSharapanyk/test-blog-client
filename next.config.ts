@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  images:{
+  images: {
     remotePatterns: [
       {
         protocol: "https",
@@ -19,9 +19,14 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "localhost",
-      }
-    ]
-  }
+      },
+    ],
+  },
+  poweredByHeader: false,
+  reactStrictMode: true,
+  devIndicators: {
+    buildActivity: true,
+  },
 };
 
 export default nextConfig;

@@ -2,6 +2,7 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { Meta } from "../api/types/Meta";
+import { safeEnv } from "../lib/getSafeEnv";
 
 export const usePagination = (meta: Meta) => {
   const serachParams = useSearchParams();
@@ -18,7 +19,10 @@ export const usePagination = (meta: Meta) => {
   const nextPage = () => {
     if (currentPage < totalPages) {
       const nextPage = currentPage + 1;
-      const newUrl = new URL(pathname, window.location.origin);
+      const newUrl = new URL(
+        pathname,
+        safeEnv?.NEXT_PUBLIC_DOMAIN ?? "http://localhost:1337"
+      );
       newUrl.searchParams.set("page", nextPage.toString());
       return newUrl.toString();
     }
@@ -28,7 +32,10 @@ export const usePagination = (meta: Meta) => {
   const prevPage = () => {
     if (currentPage > 1) {
       const nextPage = currentPage - 1;
-      const newUrl = new URL(pathname, window.location.origin);
+      const newUrl = new URL(
+        pathname,
+        safeEnv?.NEXT_PUBLIC_DOMAIN ?? "http://localhost:1337"
+      );
       newUrl.searchParams.set("page", nextPage.toString());
 
       return newUrl.toString();
@@ -38,7 +45,10 @@ export const usePagination = (meta: Meta) => {
   };
 
   const goToPage = (page: number) => {
-    const newUrl = new URL(pathname, window.location.origin);
+    const newUrl = new URL(
+      pathname,
+      safeEnv?.NEXT_PUBLIC_DOMAIN ?? "http://localhost:1337"
+    );
     newUrl.searchParams.set("page", page.toString());
     return newUrl.toString();
   };

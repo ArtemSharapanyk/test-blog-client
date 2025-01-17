@@ -23,7 +23,7 @@ export const UserActionMenu = () => {
   if (session.status === "unauthenticated") return null;
   return (
     <div className="flex items-center">
-      <AvatarWithFallback name={user?.username || ""} url={user?.avatar?.url} />
+      <AvatarWithFallback name={user?.username ?? ""} url={user?.avatar?.url} />
       <div className="ml-[10px]">
         <LogOutButton />
       </div>
